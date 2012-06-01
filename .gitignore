@@ -1,0 +1,19 @@
+###########
+## Sublime
+###########
+
+*.sublime-project
+*.sublime-workspace
+
+###########
+## Windows
+###########
+
+Thumbs.db
+Desktop.ini
+
+################
+## Build output
+################
+
+/build
