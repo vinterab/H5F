@@ -14,13 +14,13 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
-        dest: '<%= pkg.name %>.js'
+        dest: 'build/<%= pkg.name.toLowerCase() %>.js'
       }
     },
     min: {
       dist: {
         src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-        dest: '<%= pkg.name %>.min.js'
+        dest: 'build/<%= pkg.name.toLowerCase() %>.min.js'
       }
     },
     qunit: {
