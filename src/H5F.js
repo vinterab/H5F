@@ -13,6 +13,7 @@ var H5F = H5F || {};
     var field = d.createElement("input"),
         emailPatt = /^[a-zA-Z0-9.!#$%&'*+-\/=?\^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
         urlPatt = /[a-z][\-\.+a-z]*:\/\//i,
+        numberPatt = /^[0-9]*$/i,
         nodes = /^(input|select|textarea)$/i,
         isSubmit, usrPatt, curEvt, args, custMsg = "",
         // Methods
@@ -83,7 +84,7 @@ var H5F = H5F || {};
                 pattern: elem.getAttribute("pattern"), 
                 placeholder: elem.getAttribute("placeholder") 
             },
-            isType = /^(email|url)$/i,
+            isType = /^(email|url|number)$/i,
             evt = /^(input|keyup)$/i,
             fType = ((isType.test(attrs.type)) ? attrs.type : ((attrs.pattern) ? attrs.pattern : false)),
             patt = pattern(elem,fType),
@@ -184,6 +185,8 @@ var H5F = H5F || {};
             return !emailPatt.test(el.value);
         } else if(type === "url") {
             return !urlPatt.test(el.value);
+        } else if(type === "number") {
+            return !numberPatt.test(el.value);
         } else if(!type) {
             return false;
         } else {

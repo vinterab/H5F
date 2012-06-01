@@ -6,6 +6,7 @@
     formElem = document.getElementById("other"),
     email = document.getElementById("email"),
     url = document.getElementById("url"),
+    number = document.getElementById("number"),
     postcode = document.getElementById("postcode"),
     nickname = document.getElementById("nickname");
   
@@ -81,6 +82,23 @@
   test("URL", function() {
     equal( testURL("example.com"), false, "Setting URL value to example.com is invalid" );
     equal( testURL("http://example.com"), true, "Setting URL value to http://example.com is valid" );
+  });
+  
+  module("Input type number");
+  
+  function testNumber(val) {
+    var ret;
+    
+    number.value = val;
+    ret = number.checkValidity();
+    number.value = "";
+    
+    return !!ret;
+  }
+  test("Number", function() {
+    equal( testNumber("1122a123"), false, "Setting Number value to 1122a123 is invalid" );
+    equal( testNumber("1"), true, "Setting Number value to 1 is valid" );
+    equal( testNumber("12"), true, "Setting Number value to 12 is valid" );
   });
   
   module("Field attributes");
